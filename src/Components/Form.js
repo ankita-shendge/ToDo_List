@@ -1,20 +1,24 @@
 import React from "react";
 
 
-const Form = ({ inputText, setInputText, todos, setTodos , setStaus}) => {
+const Form = ({ inputText, setInputText, todos, setTodos, setStaus }) => {
 
     const inputTextHandler = (e) => {
-        
+
         console.log(e.target.value);
         setInputText(e.target.value);
 
-       
+
     };
 
     const submitTodoHandler = (e) => {
 
-        
         e.preventDefault();
+
+        if (inputText.trim() === "") {
+            return
+        }
+
         setTodos([
             ...todos, {
                 text: inputText, completed: false,
@@ -22,7 +26,7 @@ const Form = ({ inputText, setInputText, todos, setTodos , setStaus}) => {
             }
         ])
 
-      
+
 
         setInputText("");
     };
